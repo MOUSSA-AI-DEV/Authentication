@@ -1,11 +1,18 @@
 <?php
-namespace App\Contrllers;
 
-use App\Core\Controller;
-class   RecruiterController extends Controller{
+namespace App\Controllers;
 
-public function dasboard(){
+use App\Core\Auth;
 
-$this->view('recruiter/dashboard');
-}
+class RecruiterController
+{
+
+    public function dashboard()
+    {
+        Auth::check(['recruiter']);
+        include __DIR__ . '/../Views/recruiter/dashboard.php';
+
+    }
+
+ 
 }

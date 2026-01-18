@@ -1,12 +1,15 @@
 <?php
 
-
 namespace App\Controllers;
-use App\Core\Controller;
-class AdminController extends Controller{
 
-public function dashboard(){
+use App\Core\Auth;
 
-$this->view('admin/dashboard');
-}
+class AdminController
+{
+
+    public function dashboard()
+    {
+        Auth::check(['admin']);
+        include __DIR__ . '/../Views/admin/dashboard.php';;
+    }
 }

@@ -1,13 +1,23 @@
 <?php
 
-namespace App\Core ;
-class Auth {
+namespace App\Core;
 
-public static  function check(array $roles):void {
-if (!isset($_SESSION['user']))
+class Auth
+{
+
+    public static function check(array $roles): void
     {
-        header('Location:/login');
-        exit;
+        session_start(); 
+
+        if (!isset($_SESSION['user'])) {
+            header('Location: /Authentication/public/index.php/login');
+            exit;
+        }
+
+        if (!in_array($_SESSION['user']['role'], $roles)) {
+            http_response_code(403);
+            include __DIR__ . '/../Views/errors/403.php';
+            exit;
+        }
     }
-}
 }

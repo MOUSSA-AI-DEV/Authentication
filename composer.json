@@ -1,0 +1,21 @@
+
+{
+    "name": "talenthub/authentication",
+    "description": "Un système d'authentification avec gestion des rôles.",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "require": {
+        "php": "^7.4|^8.0",
+        "monolog/monolog": "^2.3",
+        "vlucas/phpdotenv": "^5.4"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "php -r \"copy('vendor/autoload.php', 'public/autoload.php');\""
+        ]
+    }
+}
